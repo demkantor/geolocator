@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const geocoder = require('../utils/geocoder');
 
 
 const StoreSchema = new mongoose.Schema({
@@ -30,5 +31,21 @@ const StoreSchema = new mongoose.Schema({
     }
 });
 
+
+// geocode middleware create location
+StoreSchema.pre('save', async function(next) {
+    const loc = await geocoder.geocode(this.address);
+    console.log('middleware info:', loc);
+    this.location = {
+        type: 'Point',
+        coordinates: [loc[0].longitude, loc[0].latitude],
+        formattedAddress: loc[0].formattedAddress
+    };
+
+    // making address undefined will not save it to DB, we have formatted address
+    this.address = undefined;
+    next();
+});
+  
 
 module.exports = mongoose.model('Store', StoreSchema);

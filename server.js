@@ -17,6 +17,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+// set client
+app.use(express.static(path.join(__dirname, 'public')));
+
 // routes
 const storesRouter = require('./routes/stores.router');
 app.use('/api/v1/stores', storesRouter);

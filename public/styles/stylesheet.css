@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(grey, darkgray, gray, darkgrey);
+    overflow: hidden;
+}
+
+.map {
+    width: 100%;
+    height: 60em;
+    border-radius: .5em;
+}
