@@ -1,5 +1,5 @@
 {
-  "name": "store-locator",
+  "name": "skatepark-locator",
   "version": "1.0.0",
   "description": "project using mapquest api for geolocation",
   "main": "server.js",

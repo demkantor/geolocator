@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const geocoder = require('../utils/geocoder');
 
 
-const StoreSchema = new mongoose.Schema({
-    storeId: {
+const ParkSchema = new mongoose.Schema({
+    parkId: {
         type: String,
-        required: [true, 'Please add a store ID'],
+        required: [true, 'Please add a park name!'],
         unique: true,
         trim: true,
-        maxlength: [10, 'Store ID must be less than 10 characters']
+        maxlength: [40, 'Park name must be less than 40 characters!']
     },
     address: {
         type: String,
@@ -33,7 +33,7 @@ const StoreSchema = new mongoose.Schema({
 
 
 // geocode middleware create location
-StoreSchema.pre('save', async function(next) {
+ParkSchema.pre('save', async function(next) {
     const loc = await geocoder.geocode(this.address);
     console.log('middleware info:', loc);
     this.location = {
@@ -48,4 +48,4 @@ StoreSchema.pre('save', async function(next) {
 });
   
 
-module.exports = mongoose.model('Store', StoreSchema);
+module.exports = mongoose.model('Park', ParkSchema);

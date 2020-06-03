@@ -21,8 +21,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
-const storesRouter = require('./routes/stores.router');
-app.use('/api/v1/stores', storesRouter);
+const parksRouter = require('./routes/parks.router');
+app.use('/api/v1/parks', parksRouter);
 
 
 
