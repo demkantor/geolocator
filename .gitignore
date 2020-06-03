@@ -1,0 +1,7 @@
+# dotenv
+config/config.env
+config.env
+.env
+
+# node modules
+node_modules
