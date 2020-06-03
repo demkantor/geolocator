@@ -1,13 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const { getStores } = require('../controlers/stores');
 
 
 // get stores
-router.get('/', (req, res) => {
-    console.log('in GET store');
-    res.send('hello you!')
-
-});
+router.route('/').get(getStores);
 
 
 
